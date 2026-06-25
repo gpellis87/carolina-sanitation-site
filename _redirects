@@ -1,0 +1,10 @@
+# Netlify / Cloudflare Pages redirect rules
+
+# Trailing slash normalization
+/book/                  /book.html              301
+/services/              /#services              301
+/locations/             /#areas                 301
+/contact/               /book.html              301
+/contact-us/            /book.html              301
+/reserve/               /book.html#event        301
+/book-now/              /book.html              301

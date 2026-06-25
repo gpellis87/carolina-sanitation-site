@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Core pages -->
+  <url><loc>https://sanitationcarolina.com/</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://sanitationcarolina.com/book.html</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+
+  <!-- Service pages -->
+  <url><loc>https://sanitationcarolina.com/services/construction-portable-toilet-rental.html</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://sanitationcarolina.com/services/event-portable-toilet-rental.html</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://sanitationcarolina.com/services/long-term-portable-restroom-rental.html</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+
+  <!-- County location pages -->
+  <url><loc>https://sanitationcarolina.com/locations/union-county-nc.html</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://sanitationcarolina.com/locations/mecklenburg-county-nc.html</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://sanitationcarolina.com/locations/cabarrus-county-nc.html</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://sanitationcarolina.com/locations/gaston-county-nc.html</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://sanitationcarolina.com/locations/anson-county-nc.html</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+
+  <!-- City location pages — Union County -->
+  <url><loc>https://sanitationcarolina.com/locations/monroe-nc.html</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://sanitationcarolina.com/locations/indian-trail-nc.html</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://sanitationcarolina.com/locations/waxhaw-nc.html</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://sanitationcarolina.com/locations/wesley-chapel-nc.html</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://sanitationcarolina.com/locations/stallings-nc.html</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://sanitationcarolina.com/locations/weddington-nc.html</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://sanitationcarolina.com/locations/marvin-nc.html</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://sanitationcarolina.com/locations/lake-park-nc.html</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://sanitationcarolina.com/locations/mineral-springs-nc.html</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://sanitationcarolina.com/locations/wingate-nc.html</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+
+  <!-- City location pages — Mecklenburg County -->
+  <url><loc>https://sanitationcarolina.com/locations/charlotte-nc.html</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://sanitationcarolina.com/locations/huntersville-nc.html</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://sanitationcarolina.com/locations/matthews-nc.html</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://sanitationcarolina.com/locations/mint-hill-nc.html</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://sanitationcarolina.com/locations/cornelius-nc.html</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://sanitationcarolina.com/locations/davidson-nc.html</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://sanitationcarolina.com/locations/pineville-nc.html</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+
+  <!-- City location pages — Cabarrus County -->
+  <url><loc>https://sanitationcarolina.com/locations/concord-nc.html</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://sanitationcarolina.com/locations/kannapolis-nc.html</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://sanitationcarolina.com/locations/harrisburg-nc.html</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.80</priority></url>
+  <url><loc>https://sanitationcarolina.com/locations/midland-nc.html</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://sanitationcarolina.com/locations/mount-pleasant-nc.html</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+
+  <!-- City location pages — Gaston County -->
+  <url><loc>https://sanitationcarolina.com/locations/gastonia-nc.html</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.82</priority></url>
+  <url><loc>https://sanitationcarolina.com/locations/belmont-nc.html</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://sanitationcarolina.com/locations/mount-holly-nc.html</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://sanitationcarolina.com/locations/cramerton-nc.html</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.72</priority></url>
+  <url><loc>https://sanitationcarolina.com/locations/lowell-nc.html</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.72</priority></url>
+  <url><loc>https://sanitationcarolina.com/locations/stanley-nc.html</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.72</priority></url>
+
+  <!-- Support -->
+  <url><loc>https://sanitationcarolina.com/privacy-policy.html</loc><lastmod>2026-06-25</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+
+  <url><loc>https://sanitationcarolina.com/locations/</loc><lastmod>2026-06-25</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+</urlset>

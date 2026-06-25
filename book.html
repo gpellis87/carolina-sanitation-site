@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Portable Restroom | Carolina Sanitation — Monroe, NC</title>
+  <meta name="description" content="Reserve a porta-john online. Weekend events $165 + tax — pay instantly via Stripe. Construction site rentals $115/month — submit a request and we'll confirm.">
+  <link rel="canonical" href="https://sanitationcarolina.com/book.html">
+  <meta property="og:title" content="Book a Portable Restroom | Carolina Sanitation">
+  <meta property="og:description" content="Reserve a porta-john in Monroe, NC. Events $165/weekend, construction $115/month.">
+  <meta property="og:url" content="https://sanitationcarolina.com/book.html">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy:      #0b2a4a;
+      --navy-deep: #071b2e;
+      --navy-mid:  #0f3360;
+      --blue:      #1d6fc4;
+      --sky:       #9ad0f0;
+      --sky-pale:  #daf0fb;
+      --off-white: #f7f9fb;
+      --white:     #ffffff;
+      --text-dark: #0b2a4a;
+      --text-mid:  #2c4a63;
+      --text-muted:#6b8ba4;
+      --success:   #16a34a;
+      --error:     #dc2626;
+
+      --shadow-sm: 0 2px 8px rgba(11,42,74,.08);
+      --shadow-md: 0 6px 24px rgba(11,42,74,.10);
+      --shadow-lg: 0 16px 48px rgba(11,42,74,.13);
+
+      --r:    10px;
+      --r-lg: 16px;
+      --r-xl: 24px;
+      --r-2xl:32px;
+      --pill: 100px;
+      --nav-h:    74px;
+      --topbar-h: 0px;
+
+      --fh: 'Bricolage Grotesque', sans-serif;
+      --fb: 'Plus Jakarta Sans', sans-serif;
+      --ease: cubic-bezier(.4,0,.2,1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--fb);
+      color: var(--text-dark);
+      background: var(--off-white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a   { text-decoration: none; color: inherit; }
+    ul  { list-style: none; }
+
+    .wrap     { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+    .wrap-sm  { max-width: 760px;  margin: 0 auto; padding: 0 24px; }
+
+    /* ── TOPBAR ─────────────────── */
+    #topbar {
+      height: var(--topbar-h);
+      background: var(--sky-pale);
+      border-bottom: 1px solid rgba(154,208,240,.35);
+      display: flex; align-items: center; justify-content: center;
+    }
+    #topbar p { font-size: 13px; font-weight: 500; color: var(--navy); }
+    #topbar a { color: var(--blue); font-weight: 700; }
+
+    /* ── NAV ────────────────────── */
+    #nav {
+      position: sticky; top: 0; z-index: 100;
+      background: #ffffff;
+      border-bottom: 1px solid rgba(11,42,74,.07);
+      height: var(--nav-h);
+      transition: height .3s var(--ease), box-shadow .3s var(--ease);
+    }
+    #nav.scrolled { height: 60px; box-shadow: var(--shadow-md); }
+    #nav .wrap { height: 100%; }
+    .nav-inner {
+      height: 100%; display: flex;
+      align-items: center; justify-content: space-between; gap: 24px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+    .nav-logo-mark {
+      width: 38px; height: 38px; border-radius: 9px;
+      background: linear-gradient(135deg, var(--blue), var(--navy));
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white); font-family: var(--fh); font-weight: 800; font-size: 16px;
+    }
+    .nav-logo-name { display: block; font-family: var(--fh); font-size: 15px; font-weight: 700; color: var(--navy); }
+    .nav-logo-sub  { display: block; font-size: 11px; font-weight: 500; color: var(--text-muted); }
+    .nav-links { display: flex; align-items: center; gap: 2px; flex: 1; }
+    .nav-links a {
+      font-size: 14px; font-weight: 500; color: var(--text-mid);
+      padding: 7px 14px; border-radius: var(--pill); transition: all .18s;
+    }
+    .nav-links a:hover { color: var(--blue); background: rgba(29,111,196,.06); }
+    .nav-right { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+    .nav-phone {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 14px; font-weight: 600; color: var(--navy); transition: color .18s;
+    }
+    .nav-phone svg { color: var(--blue); }
+    .nav-phone:hover { color: var(--blue); }
+    .btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-family: var(--fb); font-size: 15px; font-weight: 600;
+      padding: 13px 26px; border-radius: var(--pill); cursor: pointer;
+      transition: all .22s var(--ease); border: none; line-height: 1;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue), var(--navy));
+      color: var(--white);
+      box-shadow: 0 4px 18px rgba(29,111,196,.32);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(29,111,196,.44); }
+    .btn-outline {
+      background: transparent; color: var(--blue);
+      border: 1.5px solid rgba(29,111,196,.4);
+    }
+    .btn-outline:hover { background: var(--blue); color: var(--white); border-color: var(--blue); }
+    .btn-lg { padding: 16px 34px; font-size: 16px; }
+    .btn-full { width: 100%; justify-content: center; }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 7px; border: none; background: transparent; border-radius: var(--r);
+    }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--navy); border-radius: 2px; transition: all .25s var(--ease); }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    #nav-drawer {
+      display: none; position: fixed;
+      top: calc(var(--topbar-h) + var(--nav-h));
+      left: 0; right: 0;
+      background: var(--white); padding: 20px 24px 28px;
+      z-index: 99; box-shadow: var(--shadow-lg);
+      border-top: 1px solid rgba(11,42,74,.07);
+      transform: translateY(-8px); opacity: 0;
+      transition: all .22s var(--ease); pointer-events: none;
+    }
+    #nav-drawer.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+    #nav-drawer a {
+      display: flex; align-items: center; gap: 10px;
+      padding: 13px 0; font-size: 16px; font-weight: 600; color: var(--navy);
+      border-bottom: 1px solid rgba(11,42,74,.06);
+    }
+    #nav-drawer a:last-child { border-bottom: none; }
+    #nav-drawer .drawer-phone { font-size: 20px; font-weight: 700; color: var(--blue); padding-bottom: 16px; margin-bottom: 4px; }
+    #nav-backdrop { display: none; position: fixed; inset: 0; background: rgba(11,42,74,.35); z-index: 98; backdrop-filter: blur(3px); }
+
+    /* ── PAGE HEADER ─────────────── */
+    .page-header {
+      background: linear-gradient(140deg, var(--navy-deep), var(--navy));
+      padding: 64px 0 72px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-header .dots {
+      position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(154,208,240,.1) 1px, transparent 1px);
+      background-size: 36px 36px;
+      pointer-events: none;
+    }
+    .page-header-inner { position: relative; z-index: 1; }
+    .ph-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--sky); margin-bottom: 12px;
+    }
+    .ph-eyebrow::before { content: ''; display: block; width: 20px; height: 2px; background: var(--sky); border-radius: 2px; }
+    .ph-title {
+      font-family: var(--fh); font-size: clamp(28px, 4.5vw, 46px);
+      font-weight: 800; color: var(--white); letter-spacing: -.025em;
+      margin-bottom: 12px; line-height: 1.1;
+    }
+    .ph-sub { font-size: 16px; color: rgba(255,255,255,.65); }
+
+    /* angle out of header */
+    .page-header-divider { position: absolute; bottom: -1px; left: 0; right: 0; overflow: hidden; line-height: 0; }
+    .page-header-divider svg { display: block; width: 100%; }
+
+    /* ── TAB SWITCHER ────────────── */
+    .book-tabs {
+      display: flex;
+      background: var(--white);
+      border: 1px solid rgba(11,42,74,.09);
+      border-radius: var(--r-2xl);
+      padding: 6px;
+      gap: 6px;
+      margin-bottom: 36px;
+      box-shadow: var(--shadow-sm);
+    }
+    .tab-btn {
+      flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px;
+      padding: 16px 12px; border-radius: var(--r-xl);
+      border: none; background: transparent; cursor: pointer;
+      transition: all .22s var(--ease); text-align: center;
+    }
+    .tab-btn.active {
+      background: linear-gradient(135deg, var(--blue), var(--navy));
+      box-shadow: 0 4px 16px rgba(29,111,196,.28);
+    }
+    .tab-ico { font-size: 24px; margin-bottom: 2px; }
+    .tab-label {
+      font-family: var(--fh); font-size: 16px; font-weight: 700;
+      color: var(--text-mid); transition: color .22s;
+    }
+    .tab-desc { font-size: 12px; color: var(--text-muted); transition: color .22s; }
+    .tab-btn.active .tab-label { color: var(--white); }
+    .tab-btn.active .tab-desc  { color: rgba(255,255,255,.7); }
+    .tab-btn:not(.active):hover { background: var(--off-white); }
+
+    /* ── BOOKING PANELS ──────────── */
+    .book-panel { display: none; }
+    .book-panel.active { display: block; }
+
+    /* event panel */
+    .event-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .panel-card {
+      background: var(--white);
+      border: 1px solid rgba(11,42,74,.08);
+      border-radius: var(--r-2xl);
+      padding: 36px 32px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .panel-card h2 {
+      font-family: var(--fh); font-size: 22px; font-weight: 750;
+      color: var(--navy); margin-bottom: 8px; line-height: 1.2;
+    }
+    .panel-card .card-sub {
+      font-size: 14px; color: var(--text-muted); margin-bottom: 28px; line-height: 1.55;
+    }
+
+    /* price block */
+    .price-block {
+      background: var(--off-white);
+      border: 1px solid rgba(11,42,74,.08);
+      border-radius: var(--r-xl);
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .price-block-label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
+    .price-big { font-family: var(--fh); font-size: 44px; font-weight: 800; color: var(--navy); line-height: 1; }
+    .price-big span { font-size: 18px; font-weight: 500; color: var(--text-muted); }
+    .price-note { font-size: 13px; color: var(--text-muted); margin-top: 6px; line-height: 1.5; }
+
+    /* stripe badge */
+    .stripe-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--off-white); border: 1px solid rgba(11,42,74,.1);
+      border-radius: var(--pill); padding: 8px 14px;
+      font-size: 13px; font-weight: 600; color: var(--text-mid);
+      margin-bottom: 20px;
+    }
+    .stripe-badge svg { color: #635bff; }
+
+    /* what's included list */
+    .incl-list { margin-bottom: 28px; }
+    .incl-list li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 14px; color: var(--text-mid); line-height: 1.55;
+      margin-bottom: 10px;
+    }
+    .incl-ico {
+      width: 20px; height: 20px; border-radius: 50%;
+      background: rgba(29,111,196,.09); color: var(--blue);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+    }
+
+    /* how-to steps */
+    .how-mini { margin-bottom: 28px; }
+    .how-mini h3 { font-family: var(--fh); font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
+    .how-mini ol { counter-reset: s; }
+    .how-mini ol li {
+      counter-increment: s;
+      display: flex; gap: 12px;
+      font-size: 14px; color: var(--text-mid); line-height: 1.5;
+      margin-bottom: 10px;
+    }
+    .how-mini ol li::before {
+      content: counter(s);
+      display: flex; align-items: center; justify-content: center;
+      width: 22px; height: 22px; border-radius: 50%;
+      background: rgba(29,111,196,.1); color: var(--blue);
+      font-size: 12px; font-weight: 700; flex-shrink: 0; margin-top: 1px;
+    }
+
+    .notice {
+      background: rgba(29,111,196,.06);
+      border: 1px solid rgba(29,111,196,.15);
+      border-radius: var(--r-lg);
+      padding: 14px 18px;
+      font-size: 13px; color: var(--blue); line-height: 1.55;
+      margin-bottom: 24px;
+    }
+
+    /* ── FORMS ───────────────────── */
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-grid .full { grid-column: 1 / -1; }
+
+    .ff { display: flex; flex-direction: column; gap: 6px; }
+    .ff label { font-size: 13px; font-weight: 600; color: var(--navy); }
+    .ff label .req { color: var(--blue); }
+    .ff input, .ff select, .ff textarea {
+      font-family: var(--fb); font-size: 15px; color: var(--text-dark);
+      background: var(--off-white); border: 1.5px solid rgba(11,42,74,.12);
+      border-radius: var(--r); padding: 12px 16px;
+      transition: border-color .18s, box-shadow .18s;
+      width: 100%;
+    }
+    .ff input::placeholder, .ff textarea::placeholder { color: var(--text-muted); }
+    .ff input:focus, .ff select:focus, .ff textarea:focus {
+      outline: none;
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(29,111,196,.12);
+      background: var(--white);
+    }
+    .ff textarea { resize: vertical; min-height: 100px; }
+    .ff .hint { font-size: 12px; color: var(--text-muted); }
+
+    .form-status {
+      font-size: 14px; font-weight: 500; margin-top: 12px;
+      padding: 12px 16px; border-radius: var(--r); display: none;
+    }
+    .form-status.error   { display: block; background: rgba(220,38,38,.07);  color: var(--error);   border: 1px solid rgba(220,38,38,.2); }
+    .form-status.success { display: block; background: rgba(22,163,74,.07);  color: var(--success); border: 1px solid rgba(22,163,74,.2); }
+
+    .form-success-box {
+      display: none; text-align: center; padding: 40px 20px;
+    }
+    .form-success-box .success-ico {
+      font-size: 48px; margin-bottom: 16px; line-height: 1;
+    }
+    .form-success-box h3 { font-family: var(--fh); font-size: 22px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .form-success-box p  { font-size: 15px; color: var(--text-mid); }
+
+    /* botcheck (honeypot) */
+    .botcheck { display: none !important; }
+
+    /* privacy note */
+    .privacy-note { font-size: 12px; color: var(--text-muted); margin-top: 12px; line-height: 1.5; }
+    .privacy-note a { color: var(--blue); }
+
+    /* ── MOBILE BAR ──────────────── */
+    #mob-bar {
+      display: none; position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: var(--white); border-top: 1px solid rgba(11,42,74,.1);
+      padding: 10px 16px; z-index: 200;
+      box-shadow: 0 -4px 20px rgba(11,42,74,.1);
+    }
+    #mob-bar a {
+      flex: 1; display: flex; align-items: center; justify-content: center;
+      gap: 7px; padding: 13px; border-radius: var(--r);
+      font-size: 14px; font-weight: 600;
+    }
+    .mob-call { background: rgba(29,111,196,.08); color: var(--blue); border: 1.5px solid rgba(29,111,196,.2); }
+    .mob-book { background: linear-gradient(135deg, var(--blue), var(--navy)); color: var(--white); }
+
+    /* ── RESPONSIVE ──────────────── */
+    @media (max-width: 768px) {
+      :root { --nav-h: 60px; --topbar-h: 0px; }
+      .nav-links, .nav-phone { display: none; }
+      .hamburger { display: flex; }
+      #nav-drawer { display: block; }
+      #nav-backdrop { display: block; }
+      .event-panel { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-grid .full { grid-column: auto; }
+      .book-tabs { flex-direction: column; }
+      body { padding-bottom: 68px; }
+      #mob-bar { display: flex; gap: 10px; }
+    }
+  </style>
+  <link rel="stylesheet" href="assets/accessibility.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+
+<!-- NAV -->
+<nav id="nav" role="navigation" aria-label="Main navigation">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="Carolina Sanitation home">
+        <img src="assets/images/logo-mark.png" alt="Carolina Sanitation logo" style="height:38px;width:auto;max-width:210px;display:block;object-fit:contain;">
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="/">Home</a></li>
+        <li><a href="/#services">Services</a></li>
+        <li><a href="/#areas">Locations</a></li>
+        <li><a href="book.html" style="color:var(--blue);font-weight:600">Book Now</a></li>
+      </ul>
+      <div class="nav-right">
+        <a href="tel:7049561182" class="nav-phone" aria-label="Call 704-956-1182">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.06 2.18 2 2 0 012.03 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          704-956-1182
+        </a>
+        <a href="tel:7049561182" class="btn btn-primary">Call Us</a>
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div id="nav-drawer" role="dialog" aria-label="Mobile menu" aria-hidden="true">
+  <a href="tel:7049561182" class="drawer-phone">📞 704-956-1182</a>
+  <a href="/">Home</a>
+  <a href="/#services">Services</a>
+  <a href="/#areas">Locations</a>
+  <a href="book.html">Book Now</a>
+  <a href="privacy-policy.html">Privacy Policy</a>
+</div>
+<div id="nav-backdrop" aria-hidden="true"></div>
+
+<!-- PAGE HEADER -->
+<div class="page-header" role="banner">
+  <div class="dots" aria-hidden="true"></div>
+  <div class="page-header-inner wrap">
+    <div class="ph-eyebrow">Reserve a Unit</div>
+    <h1 class="ph-title">Book a Porta-John<br>in Monroe, NC</h1>
+    <p class="ph-sub">Events pay online in seconds. Construction requests get a quick confirmation call.</p>
+  </div>
+  <div class="page-header-divider" aria-hidden="true">
+    <svg viewBox="0 0 1440 48" preserveAspectRatio="none" height="48">
+      <path d="M0 48 L1440 0 L1440 48 Z" fill="#f7f9fb"/>
+    </svg>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main id="main-content" style="padding: 48px 0 80px;">
+  <div class="wrap-sm">
+
+    <!-- TAB SWITCHER -->
+    <div class="book-tabs" role="tablist" aria-label="Rental type">
+      <button class="tab-btn active" id="tab-event" role="tab" aria-selected="true" aria-controls="panel-event" onclick="switchTab('event')">
+        <div class="tab-ico" aria-hidden="true">🎉</div>
+        <span class="tab-label">Weekend Event</span>
+        <span class="tab-desc">$165 + tax · Pay online now</span>
+      </button>
+      <button class="tab-btn" id="tab-construction" role="tab" aria-selected="false" aria-controls="panel-construction" onclick="switchTab('construction')">
+        <div class="tab-ico" aria-hidden="true">🏗️</div>
+        <span class="tab-label">Construction Site</span>
+        <span class="tab-desc">$115/mo · Request & we'll confirm</span>
+      </button>
+      <button class="tab-btn" id="tab-permanent" role="tab" aria-selected="false" aria-controls="panel-permanent" onclick="switchTab('permanent')">
+        <div class="tab-ico" aria-hidden="true">🏠</div>
+        <span class="tab-label">Permanent / Other</span>
+        <span class="tab-desc">Custom quote · Contact us</span>
+      </button>
+    </div>
+
+    <!-- ══════════════════════════════
+         PANEL: EVENT
+    ══════════════════════════════ -->
+    <div id="panel-event" class="book-panel active" role="tabpanel" aria-labelledby="tab-event">
+      <div class="event-panel">
+
+        <!-- Left: info -->
+        <div class="panel-card">
+          <h2>Weekend Event Rental</h2>
+          <p class="card-sub">Clean, stocked unit delivered to your location before the weekend. Monday pickup — you don't have to do a thing.</p>
+
+          <div class="price-block">
+            <div class="price-block-label">Price</div>
+            <div class="price-big">$165 <span>/ weekend</span></div>
+            <div class="price-note">+ applicable sales tax (added at checkout)</div>
+          </div>
+
+          <div class="stripe-badge" aria-label="Secured by Stripe">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Secured by Stripe
+          </div>
+
+          <ul class="incl-list" role="list">
+            <li><div class="incl-ico" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="1.5 6 4.5 9 10.5 3"/></svg></div>Clean, fully stocked unit</li>
+            <li><div class="incl-ico" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="1.5 6 4.5 9 10.5 3"/></svg></div>Delivery to your address</li>
+            <li><div class="incl-ico" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="1.5 6 4.5 9 10.5 3"/></svg></div>Pickup on Monday</li>
+            <li><div class="incl-ico" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="1.5 6 4.5 9 10.5 3"/></svg></div>sales tax added at checkout</li>
+            <li><div class="incl-ico" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="1.5 6 4.5 9 10.5 3"/></svg></div>Birthday parties, cookouts, events</li>
+          </ul>
+
+          <div class="how-mini">
+            <h3>How it works</h3>
+            <ol>
+              <li>Click "Reserve &amp; Pay" and complete checkout via Stripe</li>
+              <li>You'll enter your event date, address, and contact info at checkout</li>
+              <li>We confirm your booking and deliver before your event</li>
+            </ol>
+          </div>
+
+          <p style="font-size:13px;color:var(--text-muted)">Questions? Call us at <a href="tel:7049561182" style="color:var(--blue);font-weight:600">704-956-1182</a> — we're happy to help.</p>
+        </div>
+
+        <!-- Right: pay CTA -->
+        <div>
+          <div class="panel-card" style="text-align:center;padding:40px 28px;">
+            <div style="font-size:48px;margin-bottom:16px;line-height:1" aria-hidden="true">🎉</div>
+            <h2 style="margin-bottom:8px">Ready to book?</h2>
+            <p style="font-size:14px;color:var(--text-muted);margin-bottom:28px;line-height:1.55">
+              Click below to pay $165 + tax securely via Stripe.
+              You'll enter your event date and delivery address at checkout.
+            </p>
+
+            <!-- ╔═══════════════════════════════════════╗
+                 ║  OWNER ACTION: Replace STRIPE_LINK    ║
+                 ║  with your live Stripe Payment Link   ║
+                 ║  Enable Stripe Tax (NC) + custom      ║
+                 ║  fields: Event date, Delivery addr,   ║
+                 ║  # of units, On-site phone.           ║
+                 ╚═══════════════════════════════════════╝ -->
+            <a href="STRIPE_PAYMENT_LINK_HERE" class="btn btn-primary btn-lg btn-full" id="stripe-btn" target="_blank" rel="noopener">
+              Reserve &amp; Pay $165 + Tax →
+            </a>
+
+            <div style="margin-top:20px;padding-top:20px;border-top:1px solid rgba(11,42,74,.08);">
+              <p style="font-size:12px;color:var(--text-muted);display:flex;align-items:center;justify-content:center;gap:6px;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Secure checkout · Powered by Stripe
+              </p>
+            </div>
+          </div>
+
+          <div class="panel-card" style="margin-top:16px;background:rgba(29,111,196,.04);border-color:rgba(29,111,196,.15);">
+            <h3 style="font-family:var(--fh);font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px;">Prefer to call?</h3>
+            <p style="font-size:14px;color:var(--text-mid);margin-bottom:16px;">We're happy to take your booking over the phone.</p>
+            <a href="tel:7049561182" class="btn btn-outline" style="width:100%;justify-content:center;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.06 2.18 2 2 0 012.03 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+              Call 704-956-1182
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════
+         PANEL: CONSTRUCTION
+    ══════════════════════════════ -->
+    <div id="panel-construction" class="book-panel" role="tabpanel" aria-labelledby="tab-construction">
+      <div class="panel-card">
+        <h2>Construction Site Rental Request</h2>
+        <p class="card-sub">
+          Tell us about your job site and we'll get back to you quickly to confirm availability and set up your service.
+        </p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px;">
+          <div style="background:var(--off-white);border:1px solid rgba(11,42,74,.08);border-radius:var(--r-xl);padding:20px;">
+            <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;">Rate</div>
+            <div style="font-family:var(--fh);font-size:34px;font-weight:800;color:var(--navy);line-height:1;">$115<span style="font-size:16px;font-weight:500;color:var(--text-muted)">/mo</span></div>
+            <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">Per unit · 4-month minimum</div>
+          </div>
+          <div style="background:rgba(29,111,196,.06);border:1px solid rgba(29,111,196,.15);border-radius:var(--r-xl);padding:20px;">
+            <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:6px;">Included</div>
+            <ul style="font-size:13px;color:var(--text-mid);line-height:1.7;">
+              <li>✓ No delivery fees</li>
+              <li>✓ No pickup fees</li>
+              <li>✓ Weekly service</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="notice">
+          <strong>Note:</strong> This is a reservation request — not a payment page.
+          After you submit, we'll review availability and contact you (usually within a few hours during business hours)
+          to confirm your service and set up billing.
+        </div>
+
+        <!-- Construction form -->
+        <form id="construction-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+          <!-- Web3Forms config -->
+          <!-- OWNER: Replace YOUR_WEB3FORMS_ACCESS_KEY with your actual key from web3forms.com -->
+          <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+          <input type="hidden" name="subject" value="New construction rental request — Carolina Sanitation website">
+          <input type="hidden" name="from_name" value="Carolina Sanitation Website">
+          <!-- Honeypot -->
+          <input type="checkbox" name="botcheck" class="botcheck" tabindex="-1" autocomplete="off">
+
+          <div class="form-grid" style="margin-bottom:20px;">
+            <div class="ff">
+              <label for="c-name">Full Name <span class="req" aria-hidden="true">*</span></label>
+              <input type="text" id="c-name" name="name" placeholder="John Smith" required autocomplete="name">
+            </div>
+            <div class="ff">
+              <label for="c-company">Company Name <span style="color:var(--text-muted);font-weight:400">(optional)</span></label>
+              <input type="text" id="c-company" name="company" placeholder="ABC Construction" autocomplete="organization">
+            </div>
+            <div class="ff">
+              <label for="c-phone">Phone <span class="req" aria-hidden="true">*</span></label>
+              <input type="tel" id="c-phone" name="phone" placeholder="(704) 555-0000" required autocomplete="tel">
+            </div>
+            <div class="ff">
+              <label for="c-email">Email</label>
+              <input type="email" id="c-email" name="email" placeholder="you@email.com" autocomplete="email">
+            </div>
+            <div class="ff full">
+              <label for="c-address">Job Site Address <span class="req" aria-hidden="true">*</span></label>
+              <input type="text" id="c-address" name="job_site_address" placeholder="123 Main St, Monroe, NC 28110" required>
+            </div>
+            <div class="ff">
+              <label for="c-units">Number of Units Needed <span class="req" aria-hidden="true">*</span></label>
+              <select id="c-units" name="units_needed" required>
+                <option value="">Select...</option>
+                <option value="1">1 unit</option>
+                <option value="2">2 units</option>
+                <option value="3">3 units</option>
+                <option value="4">4 units</option>
+                <option value="5+">5 or more</option>
+              </select>
+            </div>
+            <div class="ff">
+              <label for="c-start">Estimated Start Date <span class="req" aria-hidden="true">*</span></label>
+              <input type="date" id="c-start" name="start_date" required>
+            </div>
+            <div class="ff">
+              <label for="c-duration">Expected Duration</label>
+              <select id="c-duration" name="expected_duration">
+                <option value="">Select...</option>
+                <option value="4 months">4 months (minimum)</option>
+                <option value="5-6 months">5–6 months</option>
+                <option value="7-12 months">7–12 months</option>
+                <option value="12+ months">12+ months</option>
+                <option value="Ongoing">Ongoing / unsure</option>
+              </select>
+            </div>
+            <div class="ff">
+              <label for="c-service">Service Frequency</label>
+              <select id="c-service" name="service_frequency">
+                <option value="Weekly">Weekly (standard)</option>
+                <option value="Twice weekly">Twice weekly</option>
+                <option value="As needed">As needed</option>
+              </select>
+            </div>
+            <div class="ff full">
+              <label for="c-notes">Additional Notes</label>
+              <textarea id="c-notes" name="notes" placeholder="Access instructions, gate codes, anything else we should know..."></textarea>
+            </div>
+          </div>
+
+          <div class="h-captcha" data-captcha="true"></div>
+
+          <button type="submit" class="btn btn-primary btn-lg btn-full" id="c-submit">
+            Submit Reservation Request
+          </button>
+          <div class="form-status" id="c-status" role="alert" aria-live="polite"></div>
+          <p class="privacy-note">By submitting this form, you agree that Carolina Sanitation may use your information to respond to your request. See our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+        </form>
+
+        <div class="form-success-box" id="c-success" role="alert">
+          <div class="success-ico" aria-hidden="true">✅</div>
+          <h3>Request Received!</h3>
+          <p>We'll review your request and reach out to confirm availability — usually within a few hours during business hours. You can also call us anytime at <a href="tel:7049561182" style="color:var(--blue);font-weight:600">704-956-1182</a>.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════
+         PANEL: PERMANENT / OTHER
+    ══════════════════════════════ -->
+    <div id="panel-permanent" class="book-panel" role="tabpanel" aria-labelledby="tab-permanent">
+      <div class="panel-card">
+        <h2>Permanent Placement or Other Inquiry</h2>
+        <p class="card-sub">Need a unit long-term, or have a special situation? Reach out and we'll put together a custom quote for you.</p>
+
+        <div class="notice">
+          Permanent placements, multi-unit discounts, and other custom arrangements are handled via phone or this form. We typically respond the same day.
+        </div>
+
+        <form id="permanent-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+          <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+          <input type="hidden" name="subject" value="New permanent/custom rental inquiry — Carolina Sanitation website">
+          <input type="hidden" name="from_name" value="Carolina Sanitation Website">
+          <input type="checkbox" name="botcheck" class="botcheck" tabindex="-1" autocomplete="off">
+
+          <div class="form-grid" style="margin-bottom:20px;">
+            <div class="ff">
+              <label for="p-name">Full Name <span class="req" aria-hidden="true">*</span></label>
+              <input type="text" id="p-name" name="name" placeholder="Jane Doe" required autocomplete="name">
+            </div>
+            <div class="ff">
+              <label for="p-phone">Phone <span class="req" aria-hidden="true">*</span></label>
+              <input type="tel" id="p-phone" name="phone" placeholder="(704) 555-0000" required autocomplete="tel">
+            </div>
+            <div class="ff">
+              <label for="p-email">Email</label>
+              <input type="email" id="p-email" name="email" placeholder="you@email.com" autocomplete="email">
+            </div>
+            <div class="ff">
+              <label for="p-type">Inquiry Type</label>
+              <select id="p-type" name="inquiry_type">
+                <option value="Permanent placement">Permanent placement</option>
+                <option value="Long-term (12+ months)">Long-term rental (12+ months)</option>
+                <option value="Multiple units">Multiple units / volume discount</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="ff full">
+              <label for="p-msg">Tell Us About Your Needs <span class="req" aria-hidden="true">*</span></label>
+              <textarea id="p-msg" name="message" placeholder="Location, number of units, how long, anything specific..." required style="min-height:120px;"></textarea>
+            </div>
+          </div>
+
+          <div class="h-captcha" data-captcha="true"></div>
+
+          <button type="submit" class="btn btn-primary btn-lg btn-full" id="p-submit">Send Inquiry</button>
+          <div class="form-status" id="p-status" role="alert" aria-live="polite"></div>
+          <p class="privacy-note">By submitting this form, you agree that Carolina Sanitation may use your information to respond to your request. See our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+        </form>
+
+        <div class="form-success-box" id="p-success" role="alert">
+          <div class="success-ico" aria-hidden="true">✅</div>
+          <h3>Inquiry Sent!</h3>
+          <p>We'll be in touch shortly. You can also call us at <a href="tel:7049561182" style="color:var(--blue);font-weight:600">704-956-1182</a> for a quicker response.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- FOOTER (simplified) -->
+<footer style="background:var(--navy-deep);padding:36px 0;text-align:center;">
+  <div class="wrap">
+    <p style="font-size:13px;color:rgba(255,255,255,.4);">
+      © 2026 Carolina Sanitation · Monroe, NC ·
+      <a href="/" style="color:rgba(255,255,255,.5);">Home</a> ·
+      <a href="privacy-policy.html" style="color:rgba(255,255,255,.5);">Privacy Policy</a> ·
+      Site by <a href="#" style="color:rgba(255,255,255,.5);">Ellis Local</a>
+    </p>
+  </div>
+</footer>
+
+<!-- MOBILE STICKY BAR -->
+<div id="mob-bar" role="navigation" aria-label="Quick actions">
+  <a href="tel:7049561182" class="mob-call" aria-label="Call 704-956-1182">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.06 2.18 2 2 0 012.03 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    Call Us
+  </a>
+  <a href="book.html" class="mob-book" aria-label="Book now">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    Book Now
+  </a>
+</div>
+
+<!-- Web3Forms client (loads hCaptcha) -->
+<script src="https://web3forms.com/client/script.js" async defer></script>
+
+<script>
+  /* Tab switching */
+  function switchTab(id) {
+    document.querySelectorAll('.tab-btn').forEach(b => {
+      b.classList.remove('active');
+      b.setAttribute('aria-selected', 'false');
+    });
+    document.querySelectorAll('.book-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    document.getElementById('tab-' + id).setAttribute('aria-selected', 'true');
+    document.getElementById('panel-' + id).classList.add('active');
+    // update URL hash
+    history.replaceState(null, '', '#' + id);
+  }
+
+  /* Open correct tab from URL hash */
+  const hash = location.hash.replace('#', '');
+  if (['event', 'construction', 'permanent'].includes(hash)) switchTab(hash);
+
+  /* Nav scroll */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40), { passive: true });
+
+  /* Hamburger */
+  const ham = document.getElementById('hamburger');
+  const drawer = document.getElementById('nav-drawer');
+  const backdrop = document.getElementById('nav-backdrop');
+  function openMenu()  { ham.classList.add('open'); drawer.classList.add('open'); backdrop.style.display='block'; drawer.setAttribute('aria-hidden','false'); ham.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+  function closeMenu() { ham.classList.remove('open'); drawer.classList.remove('open'); backdrop.style.display='none'; drawer.setAttribute('aria-hidden','true'); ham.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+  ham.addEventListener('click', () => ham.classList.contains('open') ? closeMenu() : openMenu());
+  backdrop.addEventListener('click', closeMenu);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+  /* Generic Web3Forms submit handler */
+  async function handleSubmit(formId, statusId, successId, submitId) {
+    const form   = document.getElementById(formId);
+    const status = document.getElementById(statusId);
+    const success= document.getElementById(successId);
+    const btn    = document.getElementById(submitId);
+    if (!form) return;
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      // captcha check
+      const cap = form.querySelector('textarea[name="h-captcha-response"]');
+      if (cap && !cap.value) {
+        status.textContent = 'Please complete the captcha before submitting.';
+        status.className = 'form-status error';
+        return;
+      }
+
+      status.textContent = 'Sending…';
+      status.className = 'form-status';
+      status.style.display = 'block';
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+
+      try {
+        const res  = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(form) });
+        const data = await res.json();
+        if (!res.ok || !data.success) throw new Error(data.message || 'Submission failed.');
+        form.style.display = 'none';
+        success.style.display = 'block';
+        status.style.display = 'none';
+      } catch (err) {
+        status.textContent = 'Something went wrong. Please call us at 704-956-1182 or try again.';
+        status.className = 'form-status error';
+        btn.disabled = false;
+        btn.textContent = 'Submit Reservation Request';
+      }
+    });
+  }
+
+  handleSubmit('construction-form', 'c-status', 'c-success', 'c-submit');
+  handleSubmit('permanent-form',    'p-status', 'p-success', 'p-submit');
+</script>
+
+<script src="assets/accessibility.js" defer></script>
+</body>
+</html>
