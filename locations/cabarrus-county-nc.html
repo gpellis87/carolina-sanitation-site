@@ -135,6 +135,7 @@
     .footer-grid{grid-template-columns:1fr}
     .page-hero-btns{flex-direction:column}
     .page-hero-btns a{justify-content:center}
+    .page-hero h1{font-size:22px}
   }
 </style>
   <script type="application/ld+json">
@@ -159,10 +160,8 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="../assets/accessibility.css">
 </head>
 <body>
-<a class="skip-link" href="#main-content">Skip to main content</a>
 
 <nav id="nav" role="navigation" aria-label="Main navigation">
   <div class="wrap">
@@ -356,6 +355,5 @@
   hamburger.addEventListener('click', () => toggleMenu(!drawer.classList.contains('open')));
   backdrop.addEventListener('click', () => toggleMenu(false));
 </script>
-<script src="../assets/accessibility.js" defer></script>
 </body>
 </html>
