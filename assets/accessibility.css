@@ -108,7 +108,7 @@
   cursor: pointer;
 }
 
-body.a11y-text-large { font-size: 112.5%; }
+body.a11y-text-large { zoom: 1.15; }
 body.a11y-readable-font, body.a11y-readable-font *:not(svg):not(path) {
   font-family: Arial, Helvetica, sans-serif !important;
   letter-spacing: 0 !important;
