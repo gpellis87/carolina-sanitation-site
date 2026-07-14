@@ -1,42 +1,27 @@
 # Carolina Sanitation — Owner Setup Checklist
 
-Before the site goes live, complete these four steps. Each takes 5–10 minutes.
+Before the site goes live, complete these steps. Each takes 5–10 minutes.
+
+There is no online payment step — events, construction, and permanent/other requests all go through
+one request form on `book.html`. Event payment is collected at delivery or pickup (cash, card, or check).
 
 ---
 
-## 1. Stripe Payment Link (Event Bookings)
+## 1. Web3Forms (Booking & Reservation Form)
 
-1. Log in to your Stripe account (or create one at stripe.com — it's free to sign up).
-2. Go to **Products → Payment Links → New**.
-3. Add a product: "Weekend Event Porta-John Rental" — price **$165.00 USD**.
-4. Under **Tax**: enable **Stripe Tax** and set your region to **North Carolina**. Stripe will automatically calculate and add NC sales tax at checkout.
-5. Under **Custom fields**, add:
-   - "Event Date" (text)
-   - "Delivery Address" (text)
-   - "Number of Units" (dropdown: 1, 2, 3, 4, 5+)
-   - "On-site Contact Phone" (phone)
-6. Under **Customer information**: collect phone number.
-7. Click **Create link** — copy the URL (looks like `https://buy.stripe.com/xxxxx`).
-
-**Then:** Open `book.html` and replace the text `STRIPE_PAYMENT_LINK_HERE` with your copied Stripe URL.
-Search for: `STRIPE_PAYMENT_LINK_HERE`
-
----
-
-## 2. Web3Forms (Contact & Reservation Forms)
-
-The construction and permanent inquiry forms post to Web3Forms, which emails you when someone submits.
+`book.html` has a single request form (shared by the Event / Construction / Permanent tabs) that posts
+to Web3Forms, which emails you when someone submits.
 
 1. Go to **web3forms.com** and sign up (free).
 2. Create a new form — enter the email address where you want to receive submissions.
 3. Copy your **Access Key** (looks like `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`).
 
-**Then:** Open `book.html` and replace **both** instances of `YOUR_WEB3FORMS_ACCESS_KEY` with your actual key.
-Search for: `YOUR_WEB3FORMS_ACCESS_KEY` (appears twice — once for the construction form, once for the permanent form).
+**Then:** Open `book.html` and replace `YOUR_WEB3FORMS_ACCESS_KEY` with your actual key.
+Search for: `YOUR_WEB3FORMS_ACCESS_KEY` (appears once — the form's `access_key` hidden field).
 
 ---
 
-## 3. hCaptcha (Spam Protection)
+## 2. hCaptcha (Spam Protection)
 
 Web3Forms handles hCaptcha automatically when you load `https://web3forms.com/client/script.js` — no extra setup needed for the default captcha. If you want to use your own hCaptcha site key for custom branding:
 - Sign up at hcaptcha.com
@@ -46,7 +31,7 @@ For most small businesses the default Web3Forms captcha is fine.
 
 ---
 
-## 4. Analytics (Optional but recommended)
+## 3. Analytics (Optional but recommended)
 
 The site is ready for **Umami Analytics** (privacy-friendly, no cookie banner needed):
 1. Go to **cloud.umami.is** — create an account and add your site.
@@ -57,17 +42,17 @@ Or use Google Analytics if you prefer — paste the GA4 `gtag` snippet the same 
 
 ---
 
-## 5. Domain & Hosting
+## 4. Domain & Hosting
 
 The site is pure static HTML — it can be hosted anywhere:
 - **Netlify** (free tier, drag-and-drop deploy): netlify.com
 - **Cloudflare Pages** (free, fast CDN): pages.cloudflare.com
 - **Your current host** for Redline (ask Ellis Local)
 
-Once deployed, point `sanitationcarolina.com` (or your chosen domain) to the host.
+Once deployed, point `carolinasanitationnc.com` (or your chosen domain) to the host.
 
 **Find-and-replace after domain is confirmed:**  
-Search the site for `https://sanitationcarolina.com` and replace with your final domain.
+Search the site for `https://carolinasanitationnc.com` and replace with your final domain.
 Affected files: `index.html`, `book.html`, `sitemap.xml`, all `/services/` and `/locations/` pages.
 
 ---
@@ -75,7 +60,9 @@ Affected files: `index.html`, `book.html`, `sitemap.xml`, all `/services/` and `
 ## Quick Test Checklist
 
 - [ ] Open `index.html` in a browser — hero loads, photos display, nav shrinks on scroll
-- [ ] Click "Book for an Event" → lands on `book.html#event` → Stripe button goes to checkout
-- [ ] Switch to "Construction" tab → fill and submit form → you receive the email
+- [ ] Click "Book Now" → lands on `book.html` → "Weekend Event" tab is selected by default
+- [ ] Fill and submit the Event form → you receive the email → success message shows
+- [ ] Switch to "Construction" tab → confirm fields change → fill and submit → you receive the email
+- [ ] Switch to "Permanent / Other" tab → confirm fields change → fill and submit → you receive the email
 - [ ] On mobile: sticky bar appears at bottom with call + book buttons
 - [ ] Service area chips link correctly to location pages

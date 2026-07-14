@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Book a Portable Restroom | Carolina Sanitation — Greater Charlotte Area</title>
-  <meta name="description" content="Reserve a porta-john online. Weekend events $165 + tax — pay instantly via Stripe. Construction site rentals $115/month — submit a request and we'll confirm.">
-  <link rel="canonical" href="https://sanitationcarolina.com/book.html">
+  <meta name="description" content="Request a porta-john for your weekend event, construction site, or long-term placement. Weekend events $165 + tax, construction $115/month. Submit a request and we'll confirm.">
+  <link rel="canonical" href="https://carolinasanitationnc.com/book.html">
   <meta property="og:title" content="Book a Portable Restroom | Carolina Sanitation">
-  <meta property="og:description" content="Reserve a porta-john in the greater Charlotte area. Events $165/weekend, construction $115/month.">
-  <meta property="og:url" content="https://sanitationcarolina.com/book.html">
+  <meta property="og:description" content="Request a porta-john in the greater Charlotte area. Events $165/weekend, construction $115/month. We confirm by phone.">
+  <meta property="og:url" content="https://carolinasanitationnc.com/book.html">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,7 +26,7 @@
       --white:     #ffffff;
       --text-dark: #0b2a4a;
       --text-mid:  #2c4a63;
-      --text-muted:#6b8ba4;
+      --text-muted: #6b8ba4;
       --success:   #16a34a;
       --error:     #dc2626;
 
@@ -189,7 +189,7 @@
     .page-header-divider { position: absolute; bottom: -1px; left: 0; right: 0; overflow: hidden; line-height: 0; }
     .page-header-divider svg { display: block; width: 100%; }
 
-    /* ── TAB SWITCHER ────────────── */
+    /* ── TYPE SELECTOR ───────────── */
     .book-tabs {
       display: flex;
       background: var(--white);
@@ -220,12 +220,8 @@
     .tab-btn.active .tab-desc  { color: rgba(255,255,255,.7); }
     .tab-btn:not(.active):hover { background: var(--off-white); }
 
-    /* ── BOOKING PANELS ──────────── */
-    .book-panel { display: none; }
-    .book-panel.active { display: block; }
-
-    /* event panel */
-    .event-panel {
+    /* ── LAYOUT ──────────────────── */
+    .book-layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 28px;
@@ -248,6 +244,10 @@
       font-size: 14px; color: var(--text-muted); margin-bottom: 28px; line-height: 1.55;
     }
 
+    /* type-specific info blocks (only one shown at a time) */
+    .type-block { display: none; }
+    .type-block.active { display: block; }
+
     /* price block */
     .price-block {
       background: var(--off-white);
@@ -260,16 +260,6 @@
     .price-big { font-family: var(--fh); font-size: 44px; font-weight: 800; color: var(--navy); line-height: 1; }
     .price-big span { font-size: 18px; font-weight: 500; color: var(--text-muted); }
     .price-note { font-size: 13px; color: var(--text-muted); margin-top: 6px; line-height: 1.5; }
-
-    /* stripe badge */
-    .stripe-badge {
-      display: inline-flex; align-items: center; gap: 7px;
-      background: var(--off-white); border: 1px solid rgba(11,42,74,.1);
-      border-radius: var(--pill); padding: 8px 14px;
-      font-size: 13px; font-weight: 600; color: var(--text-mid);
-      margin-bottom: 20px;
-    }
-    .stripe-badge svg { color: #635bff; }
 
     /* what's included list */
     .incl-list { margin-bottom: 28px; }
@@ -335,6 +325,10 @@
     .ff textarea { resize: vertical; min-height: 100px; }
     .ff .hint { font-size: 12px; color: var(--text-muted); }
 
+    /* extra fields per type (only one group shown at a time) */
+    .extra-block { display: none; }
+    .extra-block.active { display: contents; }
+
     .form-status {
       font-size: 14px; font-weight: 500; margin-top: 12px;
       padding: 12px 16px; border-radius: var(--r); display: none;
@@ -380,7 +374,7 @@
       .nav-links, .nav-phone { display: none; }
       .hamburger { display: flex; }
       #nav-drawer { display: block; }
-      .event-panel { grid-template-columns: 1fr; }
+      .book-layout { grid-template-columns: 1fr; }
       .form-grid { grid-template-columns: 1fr; }
       .form-grid .full { grid-column: auto; }
       .book-tabs { flex-direction: column; }
@@ -389,6 +383,7 @@
     }
   </style>
   <link rel="stylesheet" href="assets/accessibility.css">
+  <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d1ed7284c82640719da48457ffcddeea"}'></script><!-- End Cloudflare Web Analytics -->
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -437,7 +432,7 @@
   <div class="page-header-inner wrap">
     <div class="ph-eyebrow">Reserve a Unit</div>
     <h1 class="ph-title">Book a Porta-John<br>Charlotte Area, NC</h1>
-    <p class="ph-sub">Events pay online in seconds. Construction requests get a quick confirmation call.</p>
+    <p class="ph-sub">Tell us what you need below — we'll confirm availability and pricing by phone or text.</p>
   </div>
   <div class="page-header-divider" aria-hidden="true">
     <svg viewBox="0 0 1440 48" preserveAspectRatio="none" height="48">
@@ -450,175 +445,158 @@
 <main id="main-content" style="padding: 48px 0 80px;">
   <div class="wrap-sm">
 
-    <!-- TAB SWITCHER -->
-    <div class="book-tabs" role="tablist" aria-label="Rental type">
-      <button class="tab-btn active" id="tab-event" role="tab" aria-selected="true" aria-controls="panel-event" onclick="switchTab('event')">
+    <!-- TYPE SELECTOR -->
+    <div class="book-tabs" role="tablist" aria-label="What do you need?">
+      <button class="tab-btn active" id="tab-event" role="tab" aria-selected="true" onclick="setType('event')">
         <div class="tab-ico" aria-hidden="true">🎉</div>
         <span class="tab-label">Weekend Event</span>
-        <span class="tab-desc">$165 + tax · Pay online now</span>
+        <span class="tab-desc">$165 + tax</span>
       </button>
-      <button class="tab-btn" id="tab-construction" role="tab" aria-selected="false" aria-controls="panel-construction" onclick="switchTab('construction')">
+      <button class="tab-btn" id="tab-construction" role="tab" aria-selected="false" onclick="setType('construction')">
         <div class="tab-ico" aria-hidden="true">🏗️</div>
         <span class="tab-label">Construction Site</span>
-        <span class="tab-desc">$115/mo · Request & we'll confirm</span>
+        <span class="tab-desc">$115/mo</span>
       </button>
-      <button class="tab-btn" id="tab-permanent" role="tab" aria-selected="false" aria-controls="panel-permanent" onclick="switchTab('permanent')">
+      <button class="tab-btn" id="tab-permanent" role="tab" aria-selected="false" onclick="setType('permanent')">
         <div class="tab-ico" aria-hidden="true">🏠</div>
         <span class="tab-label">Permanent / Other</span>
-        <span class="tab-desc">Custom quote · Contact us</span>
+        <span class="tab-desc">Custom quote</span>
       </button>
     </div>
 
-    <!-- ══════════════════════════════
-         PANEL: EVENT
-    ══════════════════════════════ -->
-    <div id="panel-event" class="book-panel active" role="tabpanel" aria-labelledby="tab-event">
-      <div class="event-panel">
+    <div class="book-layout">
 
-        <!-- Left: info -->
-        <div class="panel-card">
+      <!-- Left: dynamic info card -->
+      <div class="panel-card">
+
+        <div class="type-block active" data-type-panel="event">
           <h2>Weekend Event Rental</h2>
           <p class="card-sub">Clean, stocked unit delivered to your location before the weekend. Monday pickup — you don't have to do a thing.</p>
 
           <div class="price-block">
             <div class="price-block-label">Price</div>
             <div class="price-big">$165 <span>/ weekend</span></div>
-            <div class="price-note">+ applicable sales tax (added at checkout)</div>
-          </div>
-
-          <div class="stripe-badge" aria-label="Secured by Stripe">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            Secured by Stripe
+            <div class="price-note">+ applicable sales tax — collected at delivery or pickup (cash, card, or check).</div>
           </div>
 
           <ul class="incl-list" role="list">
             <li><div class="incl-ico" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="1.5 6 4.5 9 10.5 3"/></svg></div>Clean, fully stocked unit</li>
             <li><div class="incl-ico" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="1.5 6 4.5 9 10.5 3"/></svg></div>Delivery to your address</li>
             <li><div class="incl-ico" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="1.5 6 4.5 9 10.5 3"/></svg></div>Pickup on Monday</li>
-            <li><div class="incl-ico" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="1.5 6 4.5 9 10.5 3"/></svg></div>sales tax added at checkout</li>
+            <li><div class="incl-ico" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="1.5 6 4.5 9 10.5 3"/></svg></div>No online payment required</li>
             <li><div class="incl-ico" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="1.5 6 4.5 9 10.5 3"/></svg></div>Birthday parties, cookouts, events</li>
           </ul>
 
           <div class="how-mini">
             <h3>How it works</h3>
             <ol>
-              <li>Click "Reserve &amp; Pay" and complete checkout via Stripe</li>
-              <li>You'll enter your event date, address, and contact info at checkout</li>
-              <li>We confirm your booking and deliver before your event</li>
+              <li>Submit your event date and address using the form</li>
+              <li>We call or text to confirm availability and pricing</li>
+              <li>We deliver before your event — pay at delivery or pickup</li>
             </ol>
           </div>
-
-          <p style="font-size:13px;color:var(--text-muted)">Questions? Call us at <a href="tel:7049561182" style="color:var(--blue);font-weight:600">704-956-1182</a> — we're happy to help.</p>
         </div>
 
-        <!-- Right: pay CTA -->
-        <div>
-          <div class="panel-card" style="text-align:center;padding:40px 28px;">
-            <div style="font-size:48px;margin-bottom:16px;line-height:1" aria-hidden="true">🎉</div>
-            <h2 style="margin-bottom:8px">Ready to book?</h2>
-            <p style="font-size:14px;color:var(--text-muted);margin-bottom:28px;line-height:1.55">
-              Click below to pay $165 + tax securely via Stripe.
-              You'll enter your event date and delivery address at checkout.
-            </p>
+        <div class="type-block" data-type-panel="construction">
+          <h2>Construction Site Rental Request</h2>
+          <p class="card-sub">Tell us about your job site and we'll get back to you quickly to confirm availability and set up your service.</p>
 
-            <!-- ╔═══════════════════════════════════════╗
-                 ║  OWNER ACTION: Replace STRIPE_LINK    ║
-                 ║  with your live Stripe Payment Link   ║
-                 ║  Enable Stripe Tax (NC) + custom      ║
-                 ║  fields: Event date, Delivery addr,   ║
-                 ║  # of units, On-site phone.           ║
-                 ╚═══════════════════════════════════════╝ -->
-            <a href="STRIPE_PAYMENT_LINK_HERE" class="btn btn-primary btn-lg btn-full" id="stripe-btn" target="_blank" rel="noopener">
-              Reserve &amp; Pay $165 + Tax →
-            </a>
-
-            <div style="margin-top:20px;padding-top:20px;border-top:1px solid rgba(11,42,74,.08);">
-              <p style="font-size:12px;color:var(--text-muted);display:flex;align-items:center;justify-content:center;gap:6px;">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                Secure checkout · Powered by Stripe
-              </p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;">
+            <div style="background:var(--off-white);border:1px solid rgba(11,42,74,.08);border-radius:var(--r-xl);padding:20px;">
+              <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;">Rate</div>
+              <div style="font-family:var(--fh);font-size:34px;font-weight:800;color:var(--navy);line-height:1;">$115<span style="font-size:16px;font-weight:500;color:var(--text-muted)">/mo</span></div>
+              <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">Per unit · 4-month minimum</div>
+            </div>
+            <div style="background:rgba(29,111,196,.06);border:1px solid rgba(29,111,196,.15);border-radius:var(--r-xl);padding:20px;">
+              <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:6px;">Included</div>
+              <ul style="font-size:13px;color:var(--text-mid);line-height:1.7;">
+                <li>✓ No delivery fees</li>
+                <li>✓ No pickup fees</li>
+                <li>✓ Weekly service</li>
+              </ul>
             </div>
           </div>
 
-          <div class="panel-card" style="margin-top:16px;background:rgba(29,111,196,.04);border-color:rgba(29,111,196,.15);">
-            <h3 style="font-family:var(--fh);font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px;">Prefer to call?</h3>
-            <p style="font-size:14px;color:var(--text-mid);margin-bottom:16px;">We're happy to take your booking over the phone.</p>
-            <a href="tel:7049561182" class="btn btn-outline" style="width:100%;justify-content:center;">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.06 2.18 2 2 0 012.03 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-              Call 704-956-1182
-            </a>
+          <div class="how-mini">
+            <h3>How it works</h3>
+            <ol>
+              <li>Submit your job site details using the form</li>
+              <li>We confirm availability and set up billing by phone</li>
+              <li>Service begins on your requested start date</li>
+            </ol>
           </div>
         </div>
 
+        <div class="type-block" data-type-panel="permanent">
+          <h2>Permanent Placement or Other Inquiry</h2>
+          <p class="card-sub">Need a unit long-term, or have a special situation? Tell us about it and we'll put together a custom quote.</p>
+
+          <div class="price-block">
+            <div class="price-block-label">Price</div>
+            <div class="price-big" style="font-size:28px;">Custom quote</div>
+            <div class="price-note">Based on location, duration, and number of units.</div>
+          </div>
+
+          <ul class="incl-list" role="list">
+            <li><div class="incl-ico" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="1.5 6 4.5 9 10.5 3"/></svg></div>Long-term and rural property placements</li>
+            <li><div class="incl-ico" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="1.5 6 4.5 9 10.5 3"/></svg></div>Multi-unit discounts</li>
+            <li><div class="incl-ico" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="1.5 6 4.5 9 10.5 3"/></svg></div>Flexible service scheduling</li>
+          </ul>
+
+          <div class="how-mini">
+            <h3>How it works</h3>
+            <ol>
+              <li>Tell us about your needs using the form</li>
+              <li>We put together a custom quote</li>
+              <li>We follow up the same day, usually by phone</li>
+            </ol>
+          </div>
+        </div>
+
+        <p style="font-size:13px;color:var(--text-muted)">Questions? Call us at <a href="tel:7049561182" style="color:var(--blue);font-weight:600">704-956-1182</a> — we're happy to help.</p>
       </div>
-    </div>
 
-    <!-- ══════════════════════════════
-         PANEL: CONSTRUCTION
-    ══════════════════════════════ -->
-    <div id="panel-construction" class="book-panel" role="tabpanel" aria-labelledby="tab-construction">
+      <!-- Right: shared request form -->
       <div class="panel-card">
-        <h2>Construction Site Rental Request</h2>
-        <p class="card-sub">
-          Tell us about your job site and we'll get back to you quickly to confirm availability and set up your service.
-        </p>
+        <h2 id="form-title">Request a Weekend Event Rental</h2>
+        <p class="card-sub" id="form-sub">Submit your details below and we'll confirm by phone or text — usually within a few hours during business hours.</p>
 
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px;">
-          <div style="background:var(--off-white);border:1px solid rgba(11,42,74,.08);border-radius:var(--r-xl);padding:20px;">
-            <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;">Rate</div>
-            <div style="font-family:var(--fh);font-size:34px;font-weight:800;color:var(--navy);line-height:1;">$115<span style="font-size:16px;font-weight:500;color:var(--text-muted)">/mo</span></div>
-            <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">Per unit · 4-month minimum</div>
-          </div>
-          <div style="background:rgba(29,111,196,.06);border:1px solid rgba(29,111,196,.15);border-radius:var(--r-xl);padding:20px;">
-            <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:6px;">Included</div>
-            <ul style="font-size:13px;color:var(--text-mid);line-height:1.7;">
-              <li>✓ No delivery fees</li>
-              <li>✓ No pickup fees</li>
-              <li>✓ Weekly service</li>
-            </ul>
-          </div>
+        <div class="notice" id="form-notice">
+          <strong>Note:</strong> This is a reservation request, not a payment page. Payment for events is collected at delivery or pickup — cash, card, or check.
         </div>
 
-        <div class="notice">
-          <strong>Note:</strong> This is a reservation request — not a payment page.
-          After you submit, we'll review availability and contact you (usually within a few hours during business hours)
-          to confirm your service and set up billing.
-        </div>
-
-        <!-- Construction form -->
-        <form id="construction-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
-          <!-- Web3Forms config -->
-          <!-- OWNER: Replace YOUR_WEB3FORMS_ACCESS_KEY with your actual key from web3forms.com -->
-          <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
-          <input type="hidden" name="subject" value="New construction rental request — Carolina Sanitation website">
+        <form id="request-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+          <input type="hidden" name="access_key" value="93e849fe-1baf-430b-af3e-36164f21482f">
+          <input type="hidden" name="subject" id="form-subject" value="New weekend event request — Carolina Sanitation website">
           <input type="hidden" name="from_name" value="Carolina Sanitation Website">
+          <input type="hidden" name="service_type" id="form-service-type" value="Weekend Event">
           <!-- Honeypot -->
           <input type="checkbox" name="botcheck" class="botcheck" tabindex="-1" autocomplete="off">
 
           <div class="form-grid" style="margin-bottom:20px;">
             <div class="ff">
-              <label for="c-name">Full Name <span class="req" aria-hidden="true">*</span></label>
-              <input type="text" id="c-name" name="name" placeholder="John Smith" required autocomplete="name">
+              <label for="r-name">Full Name <span class="req" aria-hidden="true">*</span></label>
+              <input type="text" id="r-name" name="name" placeholder="John Smith" required autocomplete="name">
             </div>
             <div class="ff">
-              <label for="c-company">Company Name <span style="color:var(--text-muted);font-weight:400">(optional)</span></label>
-              <input type="text" id="c-company" name="company" placeholder="ABC Construction" autocomplete="organization">
+              <label for="r-phone">Phone <span class="req" aria-hidden="true">*</span></label>
+              <input type="tel" id="r-phone" name="phone" placeholder="(704) 555-0000" required autocomplete="tel">
             </div>
             <div class="ff">
-              <label for="c-phone">Phone <span class="req" aria-hidden="true">*</span></label>
-              <input type="tel" id="c-phone" name="phone" placeholder="(704) 555-0000" required autocomplete="tel">
+              <label for="r-email">Email</label>
+              <input type="email" id="r-email" name="email" placeholder="you@email.com" autocomplete="email">
             </div>
             <div class="ff">
-              <label for="c-email">Email</label>
-              <input type="email" id="c-email" name="email" placeholder="you@email.com" autocomplete="email">
+              <label for="r-company">Company Name <span style="color:var(--text-muted);font-weight:400">(optional)</span></label>
+              <input type="text" id="r-company" name="company" placeholder="ABC Construction" autocomplete="organization">
             </div>
             <div class="ff full">
-              <label for="c-address">Job Site Address <span class="req" aria-hidden="true">*</span></label>
-              <input type="text" id="c-address" name="job_site_address" placeholder="123 Main St, Monroe, NC 28110" required>
+              <label for="r-address" id="r-address-label">Event / Delivery Address <span class="req" aria-hidden="true">*</span></label>
+              <input type="text" id="r-address" name="address" placeholder="123 Main St, Monroe, NC 28110" required>
             </div>
             <div class="ff">
-              <label for="c-units">Number of Units Needed <span class="req" aria-hidden="true">*</span></label>
-              <select id="c-units" name="units_needed" required>
+              <label for="r-units">Number of Units <span class="req" aria-hidden="true">*</span></label>
+              <select id="r-units" name="units_needed" required>
                 <option value="">Select...</option>
                 <option value="1">1 unit</option>
                 <option value="2">2 units</option>
@@ -628,112 +606,94 @@
               </select>
             </div>
             <div class="ff">
-              <label for="c-start">Estimated Start Date <span class="req" aria-hidden="true">*</span></label>
-              <input type="date" id="c-start" name="start_date" required>
+              <label for="r-date" id="r-date-label">Event Date <span class="req" aria-hidden="true">*</span></label>
+              <input type="date" id="r-date" name="date_needed" required>
             </div>
-            <div class="ff">
-              <label for="c-duration">Expected Duration</label>
-              <select id="c-duration" name="expected_duration">
-                <option value="">Select...</option>
-                <option value="4 months">4 months (minimum)</option>
-                <option value="5-6 months">5–6 months</option>
-                <option value="7-12 months">7–12 months</option>
-                <option value="12+ months">12+ months</option>
-                <option value="Ongoing">Ongoing / unsure</option>
-              </select>
+
+            <!-- EVENT extra fields -->
+            <div class="extra-block active" data-extra="event">
+              <div class="ff">
+                <label for="e-type">Event Type</label>
+                <select id="e-type" name="event_type">
+                  <option value="">Select...</option>
+                  <option value="Birthday party">Birthday party</option>
+                  <option value="Cookout / BBQ">Cookout / BBQ</option>
+                  <option value="Wedding">Wedding</option>
+                  <option value="Community event">Community event</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
             </div>
-            <div class="ff">
-              <label for="c-service">Service Frequency</label>
-              <select id="c-service" name="service_frequency">
-                <option value="Weekly">Weekly (standard)</option>
-                <option value="Twice weekly">Twice weekly</option>
-                <option value="As needed">As needed</option>
-              </select>
+
+            <!-- CONSTRUCTION extra fields -->
+            <div class="extra-block" data-extra="construction">
+              <div class="ff">
+                <label for="c-duration">Expected Duration</label>
+                <select id="c-duration" name="expected_duration">
+                  <option value="">Select...</option>
+                  <option value="4 months">4 months (minimum)</option>
+                  <option value="5-6 months">5–6 months</option>
+                  <option value="7-12 months">7–12 months</option>
+                  <option value="12+ months">12+ months</option>
+                  <option value="Ongoing">Ongoing / unsure</option>
+                </select>
+              </div>
+              <div class="ff">
+                <label for="c-service">Service Frequency</label>
+                <select id="c-service" name="service_frequency">
+                  <option value="Weekly">Weekly (standard)</option>
+                  <option value="Twice weekly">Twice weekly</option>
+                  <option value="As needed">As needed</option>
+                </select>
+              </div>
             </div>
+
+            <!-- PERMANENT extra fields -->
+            <div class="extra-block" data-extra="permanent">
+              <div class="ff full">
+                <label for="p-type">Inquiry Type</label>
+                <select id="p-type" name="inquiry_type">
+                  <option value="Permanent placement">Permanent placement</option>
+                  <option value="Long-term (12+ months)">Long-term rental (12+ months)</option>
+                  <option value="Multiple units">Multiple units / volume discount</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+
             <div class="ff full">
-              <label for="c-notes">Additional Notes</label>
-              <textarea id="c-notes" name="notes" placeholder="Access instructions, gate codes, anything else we should know..."></textarea>
+              <label for="r-notes" id="r-notes-label">Additional Notes</label>
+              <textarea id="r-notes" name="notes" placeholder="Access instructions, gate codes, guest count, anything else we should know..."></textarea>
+              <span class="hint" id="r-notes-hint"></span>
             </div>
           </div>
 
           <div class="h-captcha" data-captcha="true"></div>
 
-          <button type="submit" class="btn btn-primary btn-lg btn-full" id="c-submit">
-            Submit Reservation Request
+          <button type="submit" class="btn btn-primary btn-lg btn-full" id="r-submit">
+            Submit Event Request
           </button>
-          <div class="form-status" id="c-status" role="alert" aria-live="polite"></div>
+          <div class="form-status" id="r-status" role="alert" aria-live="polite"></div>
           <p class="privacy-note">By submitting this form, you agree that Carolina Sanitation may use your information to respond to your request. See our <a href="privacy-policy.html">Privacy Policy</a>.</p>
         </form>
 
-        <div class="form-success-box" id="c-success" role="alert">
+        <div class="form-success-box" id="r-success" role="alert">
           <div class="success-ico" aria-hidden="true">✅</div>
           <h3>Request Received!</h3>
-          <p>We'll review your request and reach out to confirm availability — usually within a few hours during business hours. You can also call us anytime at <a href="tel:7049561182" style="color:var(--blue);font-weight:600">704-956-1182</a>.</p>
+          <p>We'll review your request and reach out to confirm — usually within a few hours during business hours. You can also call us anytime at <a href="tel:7049561182" style="color:var(--blue);font-weight:600">704-956-1182</a>.</p>
+        </div>
+
+        <div class="panel-card" style="margin-top:16px;background:rgba(29,111,196,.04);border-color:rgba(29,111,196,.15);text-align:center;">
+          <h3 style="font-family:var(--fh);font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px;">Prefer to call?</h3>
+          <p style="font-size:14px;color:var(--text-mid);margin-bottom:16px;">We're happy to take your request over the phone.</p>
+          <a href="tel:7049561182" class="btn btn-outline" style="width:100%;justify-content:center;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.06 2.18 2 2 0 012.03 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            Call 704-956-1182
+          </a>
         </div>
       </div>
+
     </div>
-
-    <!-- ══════════════════════════════
-         PANEL: PERMANENT / OTHER
-    ══════════════════════════════ -->
-    <div id="panel-permanent" class="book-panel" role="tabpanel" aria-labelledby="tab-permanent">
-      <div class="panel-card">
-        <h2>Permanent Placement or Other Inquiry</h2>
-        <p class="card-sub">Need a unit long-term, or have a special situation? Reach out and we'll put together a custom quote for you.</p>
-
-        <div class="notice">
-          Permanent placements, multi-unit discounts, and other custom arrangements are handled via phone or this form. We typically respond the same day.
-        </div>
-
-        <form id="permanent-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
-          <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
-          <input type="hidden" name="subject" value="New permanent/custom rental inquiry — Carolina Sanitation website">
-          <input type="hidden" name="from_name" value="Carolina Sanitation Website">
-          <input type="checkbox" name="botcheck" class="botcheck" tabindex="-1" autocomplete="off">
-
-          <div class="form-grid" style="margin-bottom:20px;">
-            <div class="ff">
-              <label for="p-name">Full Name <span class="req" aria-hidden="true">*</span></label>
-              <input type="text" id="p-name" name="name" placeholder="Jane Doe" required autocomplete="name">
-            </div>
-            <div class="ff">
-              <label for="p-phone">Phone <span class="req" aria-hidden="true">*</span></label>
-              <input type="tel" id="p-phone" name="phone" placeholder="(704) 555-0000" required autocomplete="tel">
-            </div>
-            <div class="ff">
-              <label for="p-email">Email</label>
-              <input type="email" id="p-email" name="email" placeholder="you@email.com" autocomplete="email">
-            </div>
-            <div class="ff">
-              <label for="p-type">Inquiry Type</label>
-              <select id="p-type" name="inquiry_type">
-                <option value="Permanent placement">Permanent placement</option>
-                <option value="Long-term (12+ months)">Long-term rental (12+ months)</option>
-                <option value="Multiple units">Multiple units / volume discount</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-            <div class="ff full">
-              <label for="p-msg">Tell Us About Your Needs <span class="req" aria-hidden="true">*</span></label>
-              <textarea id="p-msg" name="message" placeholder="Location, number of units, how long, anything specific..." required style="min-height:120px;"></textarea>
-            </div>
-          </div>
-
-          <div class="h-captcha" data-captcha="true"></div>
-
-          <button type="submit" class="btn btn-primary btn-lg btn-full" id="p-submit">Send Inquiry</button>
-          <div class="form-status" id="p-status" role="alert" aria-live="polite"></div>
-          <p class="privacy-note">By submitting this form, you agree that Carolina Sanitation may use your information to respond to your request. See our <a href="privacy-policy.html">Privacy Policy</a>.</p>
-        </form>
-
-        <div class="form-success-box" id="p-success" role="alert">
-          <div class="success-ico" aria-hidden="true">✅</div>
-          <h3>Inquiry Sent!</h3>
-          <p>We'll be in touch shortly. You can also call us at <a href="tel:7049561182" style="color:var(--blue);font-weight:600">704-956-1182</a> for a quicker response.</p>
-        </div>
-      </div>
-    </div>
-
   </div>
 </main>
 
@@ -765,23 +725,87 @@
 <script src="https://web3forms.com/client/script.js" async defer></script>
 
 <script>
-  /* Tab switching */
-  function switchTab(id) {
+  /* ── Type selector: swaps tab state, info panel, extra fields, and copy ── */
+  const TYPES = {
+    event: {
+      subject: 'New weekend event request — Carolina Sanitation website',
+      serviceType: 'Weekend Event',
+      formTitle: 'Request a Weekend Event Rental',
+      formSub: "Submit your details below and we'll confirm by phone or text — usually within a few hours during business hours.",
+      notice: '<strong>Note:</strong> This is a reservation request, not a payment page. Payment for events is collected at delivery or pickup — cash, card, or check.',
+      addressLabel: 'Event / Delivery Address',
+      dateLabel: 'Event Date',
+      dateRequired: true,
+      notesHint: '',
+      submitLabel: 'Submit Event Request',
+      successTitle: 'Request Received!',
+      successBody: "We'll review your request and reach out to confirm — usually within a few hours during business hours. Payment is collected at delivery or pickup. You can also call us anytime at <a href=\"tel:7049561182\" style=\"color:var(--blue);font-weight:600\">704-956-1182</a>."
+    },
+    construction: {
+      subject: 'New construction rental request — Carolina Sanitation website',
+      serviceType: 'Construction Site',
+      formTitle: 'Request a Construction Site Rental',
+      formSub: "Tell us about your job site and we'll get back to you quickly to confirm availability and set up your service.",
+      notice: '<strong>Note:</strong> This is a reservation request — not a payment page. After you submit, we\'ll review availability and contact you (usually within a few hours during business hours) to confirm your service and set up billing.',
+      addressLabel: 'Job Site Address',
+      dateLabel: 'Estimated Start Date',
+      dateRequired: true,
+      notesHint: 'Access instructions, gate codes, anything else we should know.',
+      submitLabel: 'Submit Reservation Request',
+      successTitle: 'Request Received!',
+      successBody: "We'll review your request and reach out to confirm availability — usually within a few hours during business hours. You can also call us anytime at <a href=\"tel:7049561182\" style=\"color:var(--blue);font-weight:600\">704-956-1182</a>."
+    },
+    permanent: {
+      subject: 'New permanent/custom rental inquiry — Carolina Sanitation website',
+      serviceType: 'Permanent / Other',
+      formTitle: 'Request a Custom Quote',
+      formSub: 'Need a unit long-term, or have a special situation? Tell us about it and we\'ll put together a custom quote — we typically respond the same day.',
+      notice: 'Permanent placements, multi-unit discounts, and other custom arrangements are handled via phone or this form. We typically respond the same day.',
+      addressLabel: 'Property Address',
+      dateLabel: 'Preferred Start Date',
+      dateRequired: false,
+      notesHint: 'Tell us more about your needs — this helps us quote accurately.',
+      submitLabel: 'Send Inquiry',
+      successTitle: 'Inquiry Sent!',
+      successBody: 'We\'ll be in touch shortly. You can also call us at <a href="tel:7049561182" style="color:var(--blue);font-weight:600">704-956-1182</a> for a quicker response.'
+    }
+  };
+
+  function setType(type) {
+    const cfg = TYPES[type];
+    if (!cfg) return;
+
     document.querySelectorAll('.tab-btn').forEach(b => {
       b.classList.remove('active');
       b.setAttribute('aria-selected', 'false');
     });
-    document.querySelectorAll('.book-panel').forEach(p => p.classList.remove('active'));
-    document.getElementById('tab-' + id).classList.add('active');
-    document.getElementById('tab-' + id).setAttribute('aria-selected', 'true');
-    document.getElementById('panel-' + id).classList.add('active');
-    // update URL hash
-    history.replaceState(null, '', '#' + id);
+    document.getElementById('tab-' + type).classList.add('active');
+    document.getElementById('tab-' + type).setAttribute('aria-selected', 'true');
+
+    document.querySelectorAll('.type-block').forEach(b => b.classList.toggle('active', b.dataset.typePanel === type));
+    document.querySelectorAll('.extra-block').forEach(b => b.classList.toggle('active', b.dataset.extra === type));
+
+    document.getElementById('form-title').textContent = cfg.formTitle;
+    document.getElementById('form-sub').textContent = cfg.formSub;
+    document.getElementById('form-notice').innerHTML = cfg.notice;
+    document.getElementById('form-subject').value = cfg.subject;
+    document.getElementById('form-service-type').value = cfg.serviceType;
+    document.getElementById('r-address-label').innerHTML = cfg.addressLabel + ' <span class="req" aria-hidden="true">*</span>';
+    document.getElementById('r-date-label').innerHTML = cfg.dateLabel + (cfg.dateRequired ? ' <span class="req" aria-hidden="true">*</span>' : ' <span style="color:var(--text-muted);font-weight:400">(optional)</span>');
+    document.getElementById('r-date').required = cfg.dateRequired;
+    document.getElementById('r-notes-hint').textContent = cfg.notesHint;
+    document.getElementById('r-submit').textContent = cfg.submitLabel;
+
+    const success = document.getElementById('r-success');
+    success.querySelector('h3').textContent = cfg.successTitle;
+    success.querySelector('p').innerHTML = cfg.successBody;
+
+    history.replaceState(null, '', '#' + type);
   }
 
   /* Open correct tab from URL hash */
   const hash = location.hash.replace('#', '');
-  if (['event', 'construction', 'permanent'].includes(hash)) switchTab(hash);
+  if (Object.keys(TYPES).includes(hash)) setType(hash);
 
   /* Nav scroll */
   const nav = document.getElementById('nav');
@@ -798,18 +822,16 @@
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
   drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
 
-  /* Generic Web3Forms submit handler */
-  async function handleSubmit(formId, statusId, successId, submitId) {
-    const form   = document.getElementById(formId);
-    const status = document.getElementById(statusId);
-    const success= document.getElementById(successId);
-    const btn    = document.getElementById(submitId);
-    if (!form) return;
+  /* Web3Forms submit handler */
+  (function() {
+    const form   = document.getElementById('request-form');
+    const status = document.getElementById('r-status');
+    const success= document.getElementById('r-success');
+    const btn    = document.getElementById('r-submit');
 
     form.addEventListener('submit', async function(e) {
       e.preventDefault();
 
-      // captcha check
       const cap = form.querySelector('textarea[name="h-captcha-response"]');
       if (cap && !cap.value) {
         status.textContent = 'Please complete the captcha before submitting.';
@@ -817,6 +839,7 @@
         return;
       }
 
+      const submitLabel = btn.textContent;
       status.textContent = 'Sending…';
       status.className = 'form-status';
       status.style.display = 'block';
@@ -834,13 +857,10 @@
         status.textContent = 'Something went wrong. Please call us at 704-956-1182 or try again.';
         status.className = 'form-status error';
         btn.disabled = false;
-        btn.textContent = 'Submit Reservation Request';
+        btn.textContent = submitLabel;
       }
     });
-  }
-
-  handleSubmit('construction-form', 'c-status', 'c-success', 'c-submit');
-  handleSubmit('permanent-form',    'p-status', 'p-success', 'p-submit');
+  })();
 </script>
 
 <script src="assets/accessibility.js" defer></script>
