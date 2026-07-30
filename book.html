@@ -26,7 +26,7 @@
       --white:     #ffffff;
       --text-dark: #0b2a4a;
       --text-mid:  #2c4a63;
-      --text-muted: #6b8ba4;
+      --text-muted: #4a6a86;
       --success:   #16a34a;
       --error:     #dc2626;
 
@@ -427,7 +427,7 @@
 <div id="nav-backdrop" aria-hidden="true"></div>
 
 <!-- PAGE HEADER -->
-<div class="page-header" role="banner">
+<div class="page-header">
   <div class="dots" aria-hidden="true"></div>
   <div class="page-header-inner wrap">
     <div class="ph-eyebrow">Reserve a Unit</div>
@@ -447,17 +447,17 @@
 
     <!-- TYPE SELECTOR -->
     <div class="book-tabs" role="tablist" aria-label="What do you need?">
-      <button class="tab-btn active" id="tab-event" role="tab" aria-selected="true" onclick="setType('event')">
+      <button class="tab-btn active" id="tab-event" role="tab" aria-selected="true" tabindex="0" onclick="setType('event')">
         <div class="tab-ico" aria-hidden="true">🎉</div>
         <span class="tab-label">Weekend Event</span>
         <span class="tab-desc">$165 + tax</span>
       </button>
-      <button class="tab-btn" id="tab-construction" role="tab" aria-selected="false" onclick="setType('construction')">
+      <button class="tab-btn" id="tab-construction" role="tab" aria-selected="false" tabindex="-1" onclick="setType('construction')">
         <div class="tab-ico" aria-hidden="true">🏗️</div>
         <span class="tab-label">Construction Site</span>
         <span class="tab-desc">$115/mo</span>
       </button>
-      <button class="tab-btn" id="tab-permanent" role="tab" aria-selected="false" onclick="setType('permanent')">
+      <button class="tab-btn" id="tab-permanent" role="tab" aria-selected="false" tabindex="-1" onclick="setType('permanent')">
         <div class="tab-ico" aria-hidden="true">🏠</div>
         <span class="tab-label">Permanent / Other</span>
         <span class="tab-desc">Custom quote</span>
@@ -700,7 +700,7 @@
 <!-- FOOTER (simplified) -->
 <footer style="background:var(--navy-deep);padding:36px 0;text-align:center;">
   <div class="wrap">
-    <p style="font-size:13px;color:rgba(255,255,255,.4);">
+    <p style="font-size:13px;color:rgba(255,255,255,.65);">
       © 2026 Carolina Sanitation · Serving the Greater Charlotte, NC Area ·
       <a href="/" style="color:rgba(255,255,255,.5);">Home</a> ·
       <a href="privacy-policy.html" style="color:rgba(255,255,255,.5);">Privacy Policy</a> ·
@@ -778,9 +778,11 @@
     document.querySelectorAll('.tab-btn').forEach(b => {
       b.classList.remove('active');
       b.setAttribute('aria-selected', 'false');
+      b.setAttribute('tabindex', '-1');
     });
     document.getElementById('tab-' + type).classList.add('active');
     document.getElementById('tab-' + type).setAttribute('aria-selected', 'true');
+    document.getElementById('tab-' + type).setAttribute('tabindex', '0');
 
     document.querySelectorAll('.type-block').forEach(b => b.classList.toggle('active', b.dataset.typePanel === type));
     document.querySelectorAll('.extra-block').forEach(b => b.classList.toggle('active', b.dataset.extra === type));
