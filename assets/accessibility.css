@@ -109,6 +109,12 @@
 }
 
 body.a11y-text-large { zoom: 1.15; }
+/* Fallback for browsers without `zoom` support: partial benefit only (elements
+   with their own explicit px font-size won't scale), but zero layout risk —
+   unlike transform:scale, it won't break position:fixed/sticky elements. */
+@supports not (zoom: 1) {
+  body.a11y-text-large { font-size: 115%; }
+}
 body.a11y-readable-font, body.a11y-readable-font *:not(svg):not(path) {
   font-family: Arial, Helvetica, sans-serif !important;
   letter-spacing: 0 !important;
