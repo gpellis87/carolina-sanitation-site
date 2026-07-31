@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accessibility Statement | Carolina Sanitation</title>
+  <meta name="description" content="Carolina Sanitation's accessibility statement: our WCAG 2.1 AA conformance target, what we've done, how we test, and how to reach us about a barrier.">
+  <link rel="canonical" href="https://carolinasanitationnc.com/accessibility-statement.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--navy:#0b2a4a;--navy-deep:#071b2e;--blue:#1d6fc4;--off-white:#f7f9fb;--text-mid:#2c4a63;--white:#fff;--fh:'Bricolage Grotesque',sans-serif;--fb:'Plus Jakarta Sans',sans-serif}
+    *{box-sizing:border-box;margin:0;padding:0} body{font-family:var(--fb);line-height:1.7;color:var(--navy);background:var(--off-white)} a{color:var(--blue);font-weight:700}.wrap{max-width:860px;margin:0 auto;padding:0 24px}.nav{background:#fff;border-bottom:1px solid rgba(11,42,74,.08)}.nav .wrap{height:74px;display:flex;align-items:center;justify-content:space-between}.logo{font-family:var(--fh);font-weight:800;color:var(--navy);text-decoration:none}.btn{display:inline-flex;align-items:center;border-radius:999px;background:var(--blue);color:#fff;text-decoration:none;padding:11px 18px;font-weight:800}.hero{background:linear-gradient(140deg,var(--navy-deep),var(--navy));color:#fff;padding:58px 0}.hero p{color:rgba(255,255,255,.78);max-width:680px}.hero h1{font-family:var(--fh);font-size:clamp(34px,6vw,58px);line-height:1.05;margin-bottom:12px}.content{background:#fff;padding:44px 0 64px}.content h2{font-family:var(--fh);font-size:24px;margin:30px 0 8px}.content p,.content li{color:var(--text-mid);margin-bottom:12px}.content ul{padding-left:22px}.updated{font-weight:700;color:var(--navy)}.callout{background:var(--off-white);border:1px solid rgba(11,42,74,.1);border-radius:12px;padding:20px 24px;margin:20px 0}.callout p{margin-bottom:8px}.callout p:last-child{margin-bottom:0}footer{padding:28px 0;background:var(--navy-deep);color:rgba(255,255,255,.68);font-size:14px}footer a{color:#fff}
+  </style>
+  <link rel="stylesheet" href="assets/accessibility.css">
+  <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "d1ed7284c82640719da48457ffcddeea"}'></script><!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<nav class="nav" aria-label="Main navigation"><div class="wrap"><a href="/" aria-label="Carolina Sanitation home"><img src="assets/images/logo-mark.png" alt="Carolina Sanitation" style="height:38px;width:auto;display:block;"></a><a class="btn" href="book.html">Book Now</a></div></nav>
+<header class="hero"><div class="wrap"><h1>Accessibility Statement</h1><p>Our commitment to making this website usable for everyone, what we've done to get there, and how to reach us if something doesn't work for you.</p></div></header>
+<main id="main-content" tabindex="-1" class="content">
+  <div class="wrap">
+    <p class="updated">Last reviewed: July 30, 2026</p>
+
+    <h2>Our Commitment</h2>
+    <p>Carolina Sanitation is committed to providing a website that's usable by as many people as possible, including people who use screen readers, keyboard-only navigation, browser zoom, or other assistive technology. We built this site's accessibility directly into the markup and styling rather than relying on an add-on widget, and we test it on an ongoing basis rather than treating it as a one-time fix.</p>
+
+    <h2>Conformance Target</h2>
+    <p>We target <strong>WCAG 2.1 Level AA</strong> (Web Content Accessibility Guidelines), the standard most commonly referenced for ADA compliance of business websites. This includes things like sufficient color contrast, a logical heading structure, keyboard-operable navigation and forms, working skip links, and properly labeled interactive elements.</p>
+
+    <h2>What We've Done</h2>
+    <ul>
+      <li>Every page has a working "Skip to main content" link and a proper main content landmark for screen reader and keyboard users.</li>
+      <li>Text and interactive elements meet the required color contrast ratios against their backgrounds.</li>
+      <li>Headings follow a logical, unskipped order (H1 → H2 → H3) so the page structure can be navigated non-visually.</li>
+      <li>All form fields have associated labels, and required fields are enforced with accessible, native browser validation.</li>
+      <li>The mobile navigation menu traps keyboard focus appropriately while open and returns focus correctly when closed.</li>
+      <li>Images convey meaningful alt text; purely decorative icons and symbols are hidden from assistive technology so they don't add noise.</li>
+      <li>The site respects your operating system's "reduce motion" setting automatically.</li>
+    </ul>
+
+    <h2>How We Test</h2>
+    <p>We use a combination of automated and manual testing:</p>
+    <ul>
+      <li><strong>Automated scanning</strong> with axe-core (the engine behind axe DevTools and Google Lighthouse), run against every page on the site — not just the homepage.</li>
+      <li><strong>Manual color contrast verification</strong> using the WCAG relative luminance formula, including for elements on gradient backgrounds that automated tools can't always compute on their own.</li>
+      <li><strong>Third-party spot checks</strong> with WAVE (Web Accessibility Evaluation Tool) as an independent second opinion.</li>
+    </ul>
+
+    <h2>Known Limitations</h2>
+    <p>A few things are outside our direct control:</p>
+    <ul>
+      <li>The booking form's spam-prevention challenge (hCaptcha) is a third-party widget; its accessibility depends on settings in that provider's own dashboard.</li>
+      <li>Embedded third-party services (Google Fonts, Cloudflare analytics) are not part of our own codebase.</li>
+    </ul>
+
+    <div class="callout">
+      <h2 style="margin-top:0">Let Us Know</h2>
+      <p>If you run into anything on this site that's difficult to use with a screen reader, keyboard, or other assistive technology, please tell us — we want to fix it. Call us at <a href="tel:7065254321">706-525-4321</a> and describe what you were trying to do and what happened.</p>
+    </div>
+  </div>
+</main>
+<footer><div class="wrap">&copy; 2026 Carolina Sanitation &middot; <a href="/">Home</a> &middot; <a href="privacy-policy.html">Privacy Policy</a> &middot; <a href="book.html">Book Now</a></div></footer>
+<script src="assets/accessibility.js" defer></script>
+</body>
+</html>
